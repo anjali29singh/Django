@@ -1,0 +1,25 @@
+<!Doctype hmtl>
+
+<hmtl>
+
+    <head>
+        <title>Home </title>
+
+    </head>
+
+    <body>
+
+        <h1> Home Pag</h1>
+
+           <p>{% for post in posts %}
+
+                <h3>{{post.title}} </h3>
+
+                <p>{{post.author}} on {{post.date_posted}}</p>
+
+                <p>{{post.content}} </p>
+            {% endfor %}
+           </p>
+    </body>
+
+</html>
