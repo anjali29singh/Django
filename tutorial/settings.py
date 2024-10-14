@@ -28,6 +28,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "blog",
     "users",
+    "crispy_forms",
+    "crispy_bootstrap4",
 ]
 
 
@@ -113,7 +115,6 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
 
-DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
