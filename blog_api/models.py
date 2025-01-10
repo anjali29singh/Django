@@ -1,13 +1,6 @@
 from django.db import models
 # blog data model 
-
-class User(models.Model):
-
-    username = models.CharField(max_length=50)
-    password = models.CharField(max_length=100)
-    email = models.EmailField()
-
-
+from django.contrib.auth.models import User
 class Blog(models.Model):
 
     #Fields
@@ -15,6 +8,8 @@ class Blog(models.Model):
     updated_at = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100,blank=True)
     body = models.TextField()
+    author  = models.ForeignKey(User,on_delete=models.CASCADE)
+
 
     
     class Meta:

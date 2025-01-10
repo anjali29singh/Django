@@ -1,14 +1,12 @@
 from django.urls import path,include
-# from blog.views import AccountViewset
-from rest_framework import routers
-from .views import BlogListCreateAPIView,BlogDetailAPIView
-
-# router = routers.SimpleRouter()
-# router.register(r'anjali',BlogViewset,basename='user')
+from .views import BlogPostAPIView, BlogPostDetailAPIView
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 urlpatterns = [
-   path('blogs/',BlogListCreateAPIView.as_view(),name='blog-list'),
-   path('blogs/<int:pk>/',BlogDetailAPIView.as_view(),name='blog-detail'),
     
+   path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+   path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+   path('posts/',BlogPostAPIView.as_view(),name='posts'),
+   path('posts/<int:pk>/',BlogPostDetailAPIView.as_view(),name='post_detail'),
 ]

@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "import_export",
     "rest_framework",
+    "rest_framework.authtoken"
 
 ]
 
@@ -68,12 +69,12 @@ WSGI_APPLICATION = "blog_app.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.sqlite3",
         "NAME": "post_db",
         "USER": "ROOT",
-        "PASSWORD":"*********",
-        "HOST":"127.0.0.1",
-        "PORT" :"3306",
+        # "PASSWORD":"*********",
+        # "HOST":"127.0.0.1",
+        # "PORT" :"3306",
     }
 }
 
@@ -121,6 +122,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 }
+
